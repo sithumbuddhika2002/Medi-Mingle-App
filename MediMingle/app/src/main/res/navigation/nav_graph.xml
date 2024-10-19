@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/base_fragment">
+
+    <!-- Base Fragment -->
+    <fragment
+        android:id="@+id/base_fragment"
+        android:name="com.example.medimingle.presentation.fragments.BaseFragment"
+        android:label="Base"
+        tools:layout="@layout/fragment_base" >
+        <!-- Actions from Base Fragment -->
+        <action
+            android:id="@+id/action_baseFragment_to_taskCategoryFragment"
+            app:destination="@id/task_category_fragment" />
+        <action
+            android:id="@+id/action_baseFragment_to_newTaskFragment"
+            app:destination="@id/new_task_fragment"
+            app:enterAnim="@anim/slide_up" />
+        <action
+            android:id="@+id/action_base_fragment_to_settings_fragment2"
+            app:destination="@id/settings_fragment" />
+    </fragment>
+
+    <!-- Task Category Fragment -->
+    <fragment
+        android:id="@+id/task_category_fragment"
+        android:name="com.example.medimingle.presentation.fragments.TaskCategoryFragment"
+        android:label="Task Category"
+        tools:layout="@layout/fragment_task_category" >
+        <!-- Argument to pass data to this fragment -->
+        <argument
+            android:name="categoryString"
+            app:argType="string" />
+        <!-- Navigation actions -->
+        <action
+            android:id="@+id/action_task_category_fragment_to_new_task_fragment"
+            app:destination="@id/new_task_fragment"
+            app:enterAnim="@anim/slide_up" />
+    </fragment>
+
+    <!-- New Task Fragment -->
+    <fragment
+        android:id="@+id/new_task_fragment"
+        android:name="com.example.medimingle.presentation.fragments.NewTaskFragment"
+        android:label="New Task"
+        tools:layout="@layout/fragment_new_task" >
+        <!-- Argument to pass a TaskCategoryInfo object -->
+        <argument
+            android:name="newTaskArg"
+            app:argType="com.example.medimingle.data.model.TaskCategoryInfo"
+            app:nullable="true" />
+    </fragment>
+
+    <!-- Completed Tasks Fragment -->
+    <fragment
+        android:id="@+id/completed_tasks_fragment"
+        android:name="com.example.medimingle.presentation.fragments.CompletedTasksFragment"
+        android:label="Completed Tasks"
+        tools:layout="@layout/fragment_completed_tasks" >
+        <!-- Navigation actions -->
+        <action
+            android:id="@+id/action_completed_tasks_fragment_to_new_task_fragment"
+            app:destination="@id/new_task_fragment"
+            app:enterAnim="@anim/slide_up" />
+    </fragment>
+
+    <!-- Settings Fragment -->
+    <fragment
+        android:id="@+id/settings_fragment"
+        android:name="com.example.medimingle.presentation.fragments.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
